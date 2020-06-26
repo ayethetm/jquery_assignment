@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<!-- logo -->
+	<link rel="icon" href="calculator.png" type="image/png" sizes="16x16">
+
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-4"><img src="calculator.png" width="65" height="65" class="mr-4">Calculator</h1>
+		</div>
+	</div>
+	
+	<div class="container py-3">
+
+		<form>
+			<div class="row mb-3 offset-lg-2">
+				<label class="col-form-label col-3 col-lg-2" for="firstnum">First Number: </label>
+				<div class="col-9 col-lg-6">
+					<input type="number" name="firstnum" class="form-control" id="firstnum">
+				</div>
+			</div>
+
+			<div class="row mb-3 offset-lg-2">
+				<label class="col-form-label col-3 col-lg-2" for="secondnum">Second Number: </label>
+				<div class="col-9 col-lg-6">
+					<input type="number" name="secondnum" class="form-control" id="secondnum">
+				</div>
+			</div>
+
+			<div class="row offset-lg-2">
+				<div class="col-3 col-lg-2">
+					<button type="button" class="btn btn-outline-info btn-block my-3 font-weight-bold" id="plus"><i class="fas fa-plus"></i></button>
+				</div>
+				<div class="col-3 col-lg-2">
+					<button type="button" class="btn btn-outline-success btn-block my-3 font-weight-bold" id="minus"><i class="fas fa-minus"></i></button>
+				</div>
+				<div class="col-3 col-lg-2">
+					<button type="button" class="btn btn-outline-danger btn-block my-3 font-weight-bold" id="multiple"><i class="fas fa-times"></i></button>
+				</div>
+				<div class="col-3 col-lg-2">
+					<button type="button" class="btn btn-outline-warning btn-block my-3 font-weight-bold" id="divide"><i class="fas fa-divide"></i></button>
+				</div>
+			</div>
+
+		</form>
+
+		<!-- result -->
+		<div class="row offset-lg-2 result-div mt-3">
+			<div class="col-12">
+				<h3>Result : <span id="result"></span></h3>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- script -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+	<script type="text/javascript">
+		// validate
+		function validate() {
+			if (!$.trim($('#firstnum').val()) || !$.trim($('#secondnum').val())) {
+				alert('Please Enter the Number.')
+			} else {
+				return true;
+			}
+		}
+
+		$(function() {
+
+			$('#plus').click(function() {
+				if (validate()) {
+					$('#result').removeClass();
+					$('#result').addClass('text-info')
+					$('#result').text( +$('#firstnum').val() + +$('#secondnum').val() );
+				}
+			});
+
+			$('#minus').click(function() {
+				if (validate()) {
+					$('#result').removeClass();
+					$('#result').addClass('text-success')
+					$('#result').text( +$('#firstnum').val() - +$('#secondnum').val() );
+				}
+			});
+
+			$('#multiple').click(function() {
+				if (validate()) {
+					$('#result').removeClass();
+					$('#result').addClass('text-danger')
+					$('#result').text( +$('#firstnum').val() * +$('#secondnum').val() );
+				}
+			});
+
+			$('#divide').click(function() {
+				if (validate()) {
+					$('#result').removeClass();
+					$('#result').addClass('text-warning')
+					$('#result').text( +$('#firstnum').val() / +$('#secondnum').val() );
+				}
+			});
+		});
+	</script>
+</body>
+</html>
